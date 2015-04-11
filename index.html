@@ -7,8 +7,30 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
     <script src="js/AnimatedMarker.js"></script>
+<!--
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.js'></script>
+-->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.css' rel='stylesheet' />
+
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    #map
+        {
+            position:fixed;
+            padding:0;
+            margin:0;
+
+            width: 100%;
+            height: 100%;
+        }
+</style>
 
 
 </head>
@@ -21,16 +43,24 @@ Venice: 45.4408474 - 12.31551509999997
 Athens: 37.983917 - 23.729359899999963
 -->
 
-<body>
-	<div id="map" style="height:500px;"></div>
+<body><div id="map"></div>
     <script>
+/*
 		var cloudmadeUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg';
         var subDomains = ['otile1','otile2','otile3','otile4'];
             var cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, subdomains: subDomains});
+*/
+        var cloudmade = new L.tileLayer('https://{s}.tiles.mapbox.com/v4/{mapId}/{z}/{x}/{y}.png?access_token={token}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            subdomains: ['a','b','c','d'],
+            mapId: 'vivekwarriar.9f5adc8d',
+            token: 'pk.eyJ1Ijoidml2ZWt3YXJyaWFyIiwiYSI6ImlrcmxPVGcifQ.3j3cbeBHGPWMOlf3JUqwdw'
+        });
 
-            var london = new L.LatLng(51.517288954651846, -0.2918243408203125);
+            var venice = new L.LatLng(45.4408474, 12.31551509999997);
 
-            var map = new L.Map('map', {center: london, zoom: 13, layers : [cloudmade]});
+            var map = new L.Map('map', {accessToken: 'pk.eyJ1Ijoidml2ZWt3YXJyaWFyIiwiYSI6ImlrcmxPVGcifQ.3j3cbeBHGPWMOlf3JUqwdw', center: venice, zoom: 5, layers : [cloudmade]});
+
 var geojsonFeature = {
   "type": "FeatureCollection",
   "features": [
@@ -1702,32 +1732,8 @@ var planeIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 L.marker([37.96152331396616, 23.6865234375], {icon: planeIcon}).addTo(map);
-/*
-       var routeLine = L.polyline([
-          [
-            0.101679,
-            51.45552
-          ],
-          [
-            0.036502,
-            51.47144
-          ],
-          [
-            -0.02872,
-            51.48733
-          ],
-          [
-            -0.09398,
-            51.50318
-          ],
-          [
-            -0.15930,
-            51.51899
-          ]
-        ]);
 
-*/
-       var routeLine = L.polyline(
+        var routeLine = L.polyline(
 [[51.498484547171,-0.120849609375],
 [51.482647787602,-0.055823611753374],
 [51.46677509415,0.0091571870640902],
@@ -2130,11 +2136,8 @@ L.marker([37.96152331396616, 23.6865234375], {icon: planeIcon}).addTo(map);
 [37.980468742815,23.727722167969]
 ]);
 
-           var aniMarker = L.animatedMarker(routeLine.getLatLngs());
+       var aniMarker = L.animatedMarker(routeLine.getLatLngs(), { icon: planeIcon });
 map.addLayer(aniMarker);
-        function animate() {
-
-        }
     </script>
 </body>
 </html>
