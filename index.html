@@ -4,16 +4,18 @@
 	<title>Plane View</title>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="leaflet.css" />
+    <script src="js/leaflet.js"></script>
 
     <script src="js/AnimatedMarker.js"></script>
 <!--
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.js'></script>
 -->
+
+<!-- rgb(48,91,219) -->
     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.css' rel='stylesheet' />
 
 <style>
@@ -29,6 +31,11 @@
 
             width: 100%;
             height: 100%;
+        }
+        .line3{
+            stroke:red;
+            stroke-width:6;
+            stroke-dasharray:8,12;
         }
 </style>
 
@@ -53,7 +60,7 @@ Athens: 37.983917 - 23.729359899999963
         var cloudmade = new L.tileLayer('https://{s}.tiles.mapbox.com/v4/{mapId}/{z}/{x}/{y}.png?access_token={token}', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             subdomains: ['a','b','c','d'],
-            mapId: 'vivekwarriar.9f5adc8d',
+            mapId: 'vivekwarriar.86c48f7b',
             token: 'pk.eyJ1Ijoidml2ZWt3YXJyaWFyIiwiYSI6ImlrcmxPVGcifQ.3j3cbeBHGPWMOlf3JUqwdw'
         });
 
@@ -65,7 +72,10 @@ var geojsonFeature = {
   "type": "FeatureCollection",
   "features": [
     {
-      "geometry": {
+      "className":{
+        "baseVal":"line3"
+      },
+        "geometry": {
         "type": "LineString",
         "coordinates": [
           [
@@ -1723,15 +1733,14 @@ L.geoJson(geojsonFeature).addTo(map);
 
 var planeIcon = L.icon({
     iconUrl: 'images/plane.png',
-    shadowUrl: 'images/planeshadow.png',
 
-    iconSize:     [38, 95], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [37, 37], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-L.marker([37.96152331396616, 23.6865234375], {icon: planeIcon}).addTo(map);
+
+//L.marker([37.96152331396616, 23.6865234375], {icon: planeIcon}).addTo(map);
 
         var routeLine = L.polyline(
 [[51.498484547171,-0.120849609375],
