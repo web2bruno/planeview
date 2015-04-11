@@ -8,6 +8,8 @@
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="js/AnimatedMarker.js"></script>
+
 
 </head>
 
@@ -1700,6 +1702,13 @@ var planeIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 L.marker([51.51899806141268, -0.15930175781250003], {icon: planeIcon}).addTo(map);
-	</script>
+
+     var line = L.polyline([[40.68510, -73.94136],[40.68576, -73.94149],[40.68649, -73.94165]]),
+    planeIcon = L.animatedMarker(line.getLatLngs());
+
+map.addLayer(planeIcon);
+
+
+    </script>
 </body>
 </html>
