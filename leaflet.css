@@ -468,7 +468,9 @@
 .leaflet-oldie .leaflet-popup-tip {
 	border: 1px solid #999;
 	}
-
+.leaflet-control-zoom {
+    top: 130px;
+}
 
 /* div icon */
 
