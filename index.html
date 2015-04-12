@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="leaflet.css" />
     <script src="js/leaflet.js"></script>
+    <script src="js/lightbox.min.js"></script>
 
     <script src="js/AnimatedMarker.js"></script>
 <!--
@@ -2146,7 +2147,7 @@ var planeIcon = L.icon({
 ]);
 
        var aniMarker = L.animatedMarker(routeLine.getLatLngs(), { icon: planeIcon });
-map.addLayer(aniMarker).on('click', function() { window.location = "http://www.google.com"; });
+map.addLayer(aniMarker).on('click', function() { window.location = "http://www.google.com"; }); // redirect the animate marker to new page
 
 /*        Venice: 45.4408474 - 12.31551509999997
         Luxemburg: 49.61162100000001 - 6.131934600000022
