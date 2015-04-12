@@ -12,11 +12,6 @@
     <script src="js/lightbox.min.js"></script>
 
     <script src="js/AnimatedMarker.js"></script>
-<!--
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.js'></script>
--->
-
-<!-- rgb(48,91,219) -->
     <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.css' rel='stylesheet' />
 
 <style>
@@ -106,14 +101,6 @@
 
 </head>
 
-<!--
-London: 51.5073509 - -0.12775829999998223
-Luxemburg: 49.61162100000001 - 6.131934600000022
-Dubrovnik: 42.65066059999999 - 18.09442379999996
-Venice: 45.4408474 - 12.31551509999997
-Athens: 37.983917 - 23.729359899999963
--->
-
 <body>
     <div id="header">
         <h1 id="logo">PlaneView</h1>
@@ -125,11 +112,6 @@ Athens: 37.983917 - 23.729359899999963
 
     <div id="map"></div>
     <script>
-/*
-		var cloudmadeUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg';
-        var subDomains = ['otile1','otile2','otile3','otile4'];
-            var cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, subdomains: subDomains});
-*/
         var cloudmade = new L.tileLayer('https://{s}.tiles.mapbox.com/v4/{mapId}/{z}/{x}/{y}.png?access_token={token}', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             subdomains: ['a','b','c','d'],
@@ -1813,8 +1795,6 @@ var planeIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-//L.marker([37.96152331396616, 23.6865234375], {icon: planeIcon}).addTo(map);
-
         var routeLine = L.polyline(
 [[51.498484547171,-0.120849609375],
 [51.482647787602,-0.055823611753374],
@@ -2218,23 +2198,14 @@ var planeIcon = L.icon({
 [37.980468742815,23.727722167969]
 ]);
 
-       var aniMarker = L.animatedMarker(routeLine.getLatLngs(), { icon: planeIcon });
-map.addLayer(aniMarker).on('click', function() { window.location = "/nasa/sky.html"; }); // redirect the animate marker to new page
+        var aniMarker = L.animatedMarker(routeLine.getLatLngs(), { icon: planeIcon });
+        map.addLayer(aniMarker).on('click', function() { window.location = "/sky.html"; });
 
-/*        Venice: 45.4408474 - 12.31551509999997
-        Luxemburg: 49.61162100000001 - 6.131934600000022
-Dubrovnik: 42.65066059999999 - 18.09442379999996*/
-        var marker = L.marker([45.4408474 , 12.31551509999997]).bindPopup("Blah").addTo(map);
-        var marker = L.marker([49.61162100000001, 6.131934600000022]).bindPopup("<a href='www.google.com'>blick</a>").addTo(map);
-        var marker = L.marker([42.65066059999999, 18.09442379999996]).addTo(map);
-
+        var marker = L.marker([49.61162100000001, 6.131934600000022]).bindPopup("Luxemburg").addTo(map);
+        var marker = L.marker([45.4408474 , 12.31551509999997]).bindPopup("Venice").addTo(map);
+        var marker = L.marker([42.65066059999999, 18.09442379999996]).bindPopup("Dubrovnik").addTo(map);
 
     </script>
-
-
-
-
-
 
 </body>
 </html>
