@@ -49,7 +49,7 @@ L.AnimatedMarker = L.Marker.extend({
   onAdd: function (map) {
     L.Marker.prototype.onAdd.call(this, map);
 
-    // Start animating when added to the map
+// Start animating when added to the map
     if (this.options.autoStart) {
       this.start();
     }
