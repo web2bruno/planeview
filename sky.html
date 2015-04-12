@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link href='style/reset.css' rel='stylesheet' type='text/css'>
+		<link href='style/main.css' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="style/place-detail.css"/>
+	</head>
+	<body>
+		<video class='ground' autoplay loop muted>
+			<source src="video/ground.mp4" type="video/mp4">
+		</video>
+		<video class='sky' autoplay loop muted>
+			<source src="video/sky.mp4" type="video/mp4">
+		</video>
+		<div class='container'>
+			<section>
+				<h1>PlaneView</h1>
+				<form id='search'><input type='search' placeholder='Search for another plane'/><input type='submit' value=''/></form>
+			</section>
+			<div id='controller'><img class='icon' src='img/sky-plane1.png'/><img class='circle' src='img/green.png'/></div>
+			<section>
+				<div id='tag'><h2><span class='p'>Flight: </span>N5876E</h2></div>
+				<div id='data'>
+					<h2><span class='p'>Latitude: </span>62°</h2>
+					<h2><span class='p'>Longitude: </span>57°</h2>
+					<h2><span class='p'>Altitude: </span>6435°</h2>
+				</div>
+			</section>
+			<section>
+				<div id='route'>
+					<div class='place'>
+						<img class='circle' src='img/green.png'/>
+						<p>Place 1</p>
+					</div>
+					<div class='place'>
+						<p>Place 2</p>
+						<img class='circle' src='img/green.png'/>
+					</div>
+					<div class='place'>
+						<img class='circle' src='img/green.png'/>
+						<p>Place 3</p>
+					</div>
+					<div class='place current'>
+						<p>Place 4</p>
+						<img class='circle' src='img/green.png'/>
+					</div>
+					<div class='place'>
+						<img class='circle' src='img/green.png'/>
+						<p>Place 5</p>
+					</div>
+					<div class='place'>
+						<p>Place 6</p>
+						<img class='circle' src='img/green.png'/>
+					</div>
+					<img class='plane' src='img/sky-plane2.png'/>
+				</div>
+				<div id='action'>
+					<div class='close'>
+						<img src='img/close.png'onclick="history.go(-1);" />
+						<p>Close</p>
+					</div>
+					<div class='record'>
+						<img src='img/record.png'/>
+						<p>Record</p>
+					</div>
+					<div class='back'>
+						<img src='img/back.png'/>
+						<p>Back</p>
+					</div>
+				</div>
+			</section>
+		</div>
+		<p class='location'>City1</div>
+		<p class='location'>City2</div>
+		<p class='location'>City2</div>
+			<div id="content-back">
+
+
+  	<div class='box-detail'>
+
+  	<div class="grid-container">
+  		<img class='close' src='img/close.png'/>
+						<img src="pic/main-square-1.jpg" />
+
+			<div class="content">
+				<h5>Main Square</h5>
+					<p class="description">
+							Venice is a collection of 117 small islands connected by a system of canals and bridges. Access to the city is by boat or train and there is no vehicle access on the main islands. This means that all aspects of Venician life are dependant on deliveries by hand or by boat.
+					</p>
+					<p class="description">
+							Piazza Saint Marco forms the centerpiece of the main island. The piazza, main square, features St. Marcs Basilica and its characteristic bell tower. During the annual carnival, which marks the start of Lent a girl dressed as a dove descends from the tower to the main square.
+				    </p>
+			</div>
+  	</div>
+  	<div class="grid-container">
+
+						<img src="pic/main-square.jpg" />
+
+			<div class="content">
+				<h5>Main Square</h5>
+					<p class="description">
+							Venice is a collection of 117 small islands connected by a system of canals and bridges. Access to the city is by boat or train and there is no vehicle access on the main islands. This means that all aspects of Venician life are dependant on deliveries by hand or by boat.
+					</p>
+					<p class="description">
+							Piazza Saint Marco forms the centerpiece of the main island. The piazza, main square, features St. Marcs Basilica and its characteristic bell tower. During the annual carnival, which marks the start of Lent a girl dressed as a dove descends from the tower to the main square.
+				    </p>
+			</div>
+  	</div>
+
+  </div>
+  </div>
+	</body>
+	<script type='text/javascript'>
+	function rtn_trueTop(ele){
+		return ele.offsetTop+ele.offsetHeight/2;
+	}
+	function rtn_trueLeft(ele){
+		return ele.offsetLeft+ele.offsetWidth/2;
+	}
+	function rtn_top(ele){
+		return Number(ele.style.top.split('px')[0]);
+	}
+	function rtn_left(ele){
+		return Number(ele.style.left.split('px')[0]);
+	}
+	var num_place=0;
+	function ani_route(){
+		var ele_plane=document.getElementById('route').getElementsByClassName('plane')[0];
+		var ele_circles=document.getElementById('route').getElementsByClassName('circle');
+		var num_place_current;
+		ele_plane.style.position='absolute';
+		var i=0;
+		function act_position(){
+			var num_top=rtn_top(ele_plane)+rtn_trueTop(ele_circles[num_place])-rtn_trueTop(ele_plane);
+			var num_left=rtn_left(ele_plane)+rtn_trueLeft(ele_circles[num_place])-rtn_trueLeft(ele_plane);
+			if(rtn_trueTop(ele_plane)-rtn_trueTop(ele_circles[num_place])>=1||rtn_trueTop(ele_plane)-rtn_trueTop(ele_circles[num_place])<=-1){ele_plane.style.top=num_top+'px';}
+			ele_plane.style.left=num_left+i+'px';
+			sty_circle();
+			i++;
+			if(rtn_trueLeft(ele_circles[ele_circles.length-1])>rtn_trueLeft(ele_plane)){
+				setTimeout(act_position,500);
+			}
+		}
+		act_position();
+		var num_space_current;
+		function sty_circle(){
+			for(n=0;n<ele_circles.length;n++){
+				if(rtn_trueLeft(ele_plane)<rtn_trueLeft(ele_circles[n])){
+					ele_circles[n].setAttribute('src','img/white.png');
+					ele_circles[n].parentNode.style.opacity=0.8;
+					ele_circles[n].parentNode.style.backgroundImage='url(img/white.png),url(img/white.png)';
+					ele_circles[n].parentNode.style.color='#fff';
+				}else{
+					ele_circles[n].setAttribute('src','img/green.png');
+					ele_circles[n].parentNode.style.opacity=1;
+					ele_circles[n].parentNode.style.backgroundImage='url(img/green.png),url(img/green.png)';
+					ele_circles[n].parentNode.getElementsByTagName('p')[0].style.color='#52ebdb';
+					num_space_current=n;
+				}
+			}
+		}
+
+	}
+	ani_route();
+	function act_video(){
+		var ele_video=document.getElementsByTagName('video');
+		var ele_video1;
+		var ele_video2
+		for(i=0;i<ele_video.length;i++){
+			if(ele_video[i].className=='sky'){
+				ele_video1=ele_video[i];
+			}else if(ele_video[i].className=='ground'){
+				ele_video2=ele_video[i];
+			}
+		}
+		function sty_video_opacity(){
+			ele_video2.style.opacity=0.75;
+			ele_video1.style.opacity=0;
+			ele_video1.style.webkitAnimation='opacity-out 5s ease 1';
+		}
+		document.body.ondblclick=function(){
+			sty_video_opacity();
+		}
+		//setTimeout(sty_video_opacity,8000);
+	}
+	act_video();
+	function act_detail(){
+		var ele_locations=document.getElementsByClassName('location');
+		var ele_detail=document.getElementsByClassName('box-detail')[0];
+
+		function act_close(){
+			var ele_close=document.getElementsByClassName('box-detail')[0].getElementsByClassName('close')[0];
+
+
+			ele_close.onclick=function(){
+				document.getElementsByClassName('box-detail')[0].style.display='none';
+			}
+		}
+
+		for(i=0;i<ele_locations.length;i++){
+			ele_locations[i].onclick=function(){
+				document.getElementsByClassName('box-detail')[0].style.display='block';
+				act_close();
+			}
+		}
+	}
+	act_detail();
+	</script>
+</html>

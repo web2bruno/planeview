@@ -1,0 +1,44 @@
+.box-detail{
+	display:none;
+	z-index:2;
+	position:absolute;
+	top:0;
+	left:0
+	overflow:hidden;
+	margin:3% 3% 0;
+	padding:3% 3% 0;
+	background-color:#fff;
+	border-radius:20px 20px 0 0;
+}
+.box-detail *{
+	color:#000;
+}
+.box-detail .close{
+	position:absolute;
+	top:1%;
+	right:1%;
+	width:3.2%;
+	padding:1%;
+	margin-bottom:8%;
+	border-radius:50%;
+	background:#52ebd6;
+}
+.grid-container {
+	overflow:hidden;
+	float:left;
+	width:100%;
+  	display:block;
+	margin:0 auto 3%;
+	background-clip:border-box;
+
+}
+.grid-container>*{
+	float:left;
+}
+.grid-container img{
+	width:50%;
+}
+.grid-container .content{
+	padding-left:3%;
+	width:50%;
+}

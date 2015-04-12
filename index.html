@@ -8,10 +8,9 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <link rel="stylesheet" href="leaflet.css" />
-    <script src="js/leaflet.js"></script>            // used to make the map and markers
-    <script src="js/lightbox.min.js"></script>       // plan to use for overlaying the view inside the plane
+    <script src="js/leaflet.js"></script>            <!--used to make the map and markers-->
 
-    <script src="js/AnimatedMarker.js"></script>     // used to animate the plane on the path
+    <script src="js/AnimatedMarker.js"></script>    <!-- used to animate the plane on the path-->
 <!--
     <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.7/mapbox.js'></script>
 -->
@@ -2147,7 +2146,7 @@ var planeIcon = L.icon({
 ]);
 
        var aniMarker = L.animatedMarker(routeLine.getLatLngs(), { icon: planeIcon });
-map.addLayer(aniMarker).on('click', function() { window.location = "http://www.google.com"; }); // redirect the animate marker to new page
+map.addLayer(aniMarker).on('click', function() { window.location = "/sky.html"; }); // redirect the animate marker to new page
 
 /*        Venice: 45.4408474 - 12.31551509999997
         Luxemburg: 49.61162100000001 - 6.131934600000022
@@ -2156,6 +2155,13 @@ Dubrovnik: 42.65066059999999 - 18.09442379999996*/
         var marker = L.marker([49.61162100000001, 6.131934600000022]).bindPopup("<a href='www.google.com'>blick</a>").addTo(map);
         var marker = L.marker([42.65066059999999, 18.09442379999996]).addTo(map);
 
+
     </script>
+
+
+
+
+
+
 </body>
 </html>
